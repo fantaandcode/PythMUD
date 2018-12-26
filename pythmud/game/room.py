@@ -45,7 +45,8 @@ class exit():	# exit object for a room
 	def getToRoom(self):
 		return self.to_room
 
-def newRoom(ID, name, desc, items, exits):	# create new room
-	r = room(ID, name, desc, items, exits)
-	print("Room", ID, "created.")
-	return r
+class roomops:
+	def newRoom(ID, name, desc, items, exits):	# create new room
+		r = room(ID, name, desc, items, exits)
+		print("Room", ID, "created.")
+		return r

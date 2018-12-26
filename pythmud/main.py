@@ -5,15 +5,13 @@ import subprocess
 import sys
 
 # local imports
-sys.path.insert(0, './game')
-import checkInput
-import room
+from game.checkInput import checkInput
+from game.room import room
+from game.room import exit
+from game.room import roomops
 
-sys.path.insert(0, './utils')
-import textC as tC
-import helpMsg
-
-# initialization
+from utils.textC import textC as tC
+from utils.helpMsg import helpMsg
 
 # get terminal size
 rows, columns = subprocess.check_output(['stty', 'size']).decode().split()
@@ -23,7 +21,6 @@ messageLog = []			# log of messages
 max_message_len = int(columns)	# max length of a message
 mL_show_length = 10		# showed messages
 mL_max_length = 100		# max stored messages
-
 
 spacer = '=' * max_message_len	# normal spacer
 
@@ -39,9 +36,9 @@ class main():
 
 	def room_load(self):	# currently only in testing, using a predefined room layout, not from a file for now
 		print("Loading rooms")
-		room_list.append(room.newRoom(1, "Test room", "Testing room's description.", [], []))
+		room_list.append(roomops.newRoom(1, "Test room", "Testing room's description.", [], []))
 		room_list[0].addExit("south", 2)
-		room_list.append(room.newRoom(2, "Test room 2", "Testing room 2's description.", [], []))
+		room_list.append(roomops.newRoom(2, "Test room 2", "Testing room 2's description.", [], []))
 		room_list[1].addExit("north", 1)
 
 	def main_loop(self):
